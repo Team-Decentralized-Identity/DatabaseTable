@@ -1,0 +1,61 @@
+@startuml
+
+class "UI Components" as UI_Components
+class "DID Component" as DID_Component
+class "Repos Component" as Repos_Component
+class "PDS Component" as PDS_Component
+class "Application Server" as Application_Server
+class "App View Prism" as App_View_Prism
+class "Lexicons" as Lexicons
+class "URL Schemes" as URL_Schemes
+class "Namespaced Identifiers" as Namespaced_Identifiers
+
+UI_Components -- "accesses" 
+"accesses" -- DID_Component
+DID_Component -- "BlueSky AT Protocol" 
+"BlueSky AT Protocol" --> Application_Server
+Application_Server -- "HTTP, BlueSky AT Protocol" 
+"HTTP, BlueSky AT Protocol" --> Repos_Component
+Application_Server -- "HTTP" 
+"HTTP" --> PDS_Component
+
+UI_Components -- "User Interaction" 
+"User Interaction" --> App_View_Prism
+
+
+
+database "On-premises" {
+     [API Server] 
+    node [OnPremRepos] as On-premises Repos
+    node [OnPremPDS] as On-premises PDS
+}
+
+deployment "Cloud" {
+    node [CloudAppServer] as Cloud Application Server
+    node [CloudRepos] as Cloud Repos
+    node [CloudPDS] as Cloud PDS
+}
+
+deployment "Hybrid" {
+    node [HybridAppServer] as Hybrid Application Server
+    node [HybridRepos] as Hybrid Repos
+    node [HybridPDS] as Hybrid PDS
+}
+
+node [User] as User
+
+User --> UI_Components
+
+UI_Components --> OnPremAppServer
+UI_Components --> CloudAppServer
+UI_Components --> HybridAppServer
+
+OnPremAppServer --> OnPremRepos
+OnPremAppServer --> OnPremPDS
+
+CloudAppServer --> CloudRepos
+CloudAppServer --> CloudPDS
+
+HybridAppServer --> HybridRepos
+HybridAppServer --> HybridPDS
+@enduml
