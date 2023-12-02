@@ -1,0 +1,91 @@
+@startuml
+RECTANGLE  DIDConnect {
+  }
+   RECTANGLE ProjectManagement {
+  }
+   RECTANGLE Analysis {
+  }
+   RECTANGLE Design {
+  }
+   RECTANGLE Implementation {
+  }   
+  RECTANGLE Testing {
+  }
+   RECTANGLE Deployment {
+  }
+
+
+  RECTANGLE ProjectPlanning {
+   
+  }
+  RECTANGLE Communication{
+ 
+  }
+  RECTANGLE FeasibilityStudy {
+  }
+
+  RECTANGLE SystemDesign {  
+  }
+  RECTANGLE EnvironmentInteroperability {
+
+  }
+RECTANGLE  DataBase {
+
+  }
+RECTANGLE MatrixUI {
+
+  }
+RECTANGLE TestingIdenityVaildationMethods{
+
+  }
+RECTANGLE DeploymemtOfProduct{
+
+  }
+RECTANGLE MigrationToken{
+
+  }
+RECTANGLE EnvironmentInteroperability{
+
+  }
+RECTANGLE DID{
+
+  }
+RECTANGLE Repos {
+
+  }
+ RECTANGLE SystemRequestSummary {
+
+  }
+RECTANGLE ProjectManagementTools {
+
+  }
+RECTANGLE TechnicalDesign {
+
+  }
+
+
+
+
+
+DIDConnect -->  ProjectManagement
+DIDConnect --> Analysis
+DIDConnect --> Design
+DIDConnect --> Implementation
+DIDConnect --> Testing
+DIDConnect --> Deployment
+ProjectManagement --> ProjectPlanning
+ProjectManagement --> Communication
+Analysis --> FeasibilityStudy
+ProjectPlanning --> SystemRequestSummary
+Communication --> ProjectManagementTools
+FeasibilityStudy --> TechnicalDesign
+Design --> SystemDesign
+Design --> EnvironmentInteroperability
+Design --> DataBase 
+SystemDesign --> DID
+DataBase --> Repos
+EnvironmentInteroperability --> MigrationToken
+Implementation --> MatrixUI
+Testing --> TestingIdenityVaildationMethods
+Deployment --> DeploymemtOfProduct
+@enduml
